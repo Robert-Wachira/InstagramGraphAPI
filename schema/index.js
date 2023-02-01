@@ -29,5 +29,6 @@ type MediaData {
 
 
 module.exports = {
-  UserPages
+  UserPages,
+  MediaData
 }
