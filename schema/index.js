@@ -1,8 +1,11 @@
 const { buildSchema } = require('graphql');
 
-const UserPages = buildSchema`
-type UserPages {
-
+const UserProfile = buildSchema`
+type UserProfile {
+  account_type: String!
+  id: Int!
+  media_count: Int
+  username: String
 }
 `;
 
@@ -25,10 +28,19 @@ type MediaData {
   username: String
   video_title: String
 }
+`;
+
+const Insights = buildSchema`
+{
+  profile_views: Int
+  period: Boolean
+  impressions: String
+}
 `
 
 
 module.exports = {
-  UserPages,
-  MediaData
+  UserProfile,
+  MediaData,
+  Insights
 }
