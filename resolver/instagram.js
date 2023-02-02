@@ -1,7 +1,5 @@
 const { UserInputError } = require("apollo-server-express");
 const { get } = require("axios").default;
-const { post } = require("request");
-const { promisify } = require("util");
 require("dotenv").config();
 
 
