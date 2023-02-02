@@ -16,7 +16,7 @@ async function getUserProfile()
         response = await get("https://graph.instagram.com/me", {
             params: {
                 fields: "id,username,media_count,account_type",
-                access_token: process.env.LONG_LIVED_AT,
+                access_token: process.env.ACCESS_TOKEN,
             },
             headers: {
                 host: "graph.instagram.com",
@@ -44,8 +44,8 @@ async function getMediaData()
         response = await get("https://graph.instagram.com/me/media", {
             params: {
                 fields:
-                    "id,caption,media_url,media_type,permalink,thumbnail_url,timestamp,username",
-                access_token: process.env.LONG_LIVED_AT,
+                    "id, caption, media_url, media_type, permalink, thumbnail_url, timestamp, username, comments_count, ig_id, is_comment_enabled, is_shared_to_feed, like_count, owner, shortcode, video_title",
+                access_token: process.env.ACCESS_TOKEN,
             },
             headers: {
                 host: "graph.instagram.com",
@@ -63,7 +63,7 @@ async function getMediaData()
 }
 
 // getting Insights
-async function getInsights(media_id)
+async function getInsights()
 {
     let response;
 
@@ -73,8 +73,8 @@ async function getInsights(media_id)
         response = await get(`https://graph.instagram.com/${media_id}`, {
             params: {
                 fields:
-                    "id,caption,media_url,media_type,permalink,thumbnail_url,timestamp,username",
-                access_token: process.env.LONG_LIVED_AT,
+                    "profile_views, period, impressions",
+                access_token: process.env.ACCESS_TOKEN,
             },
             headers: {
                 host: "graph.instagram.com",
