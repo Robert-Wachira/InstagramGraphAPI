@@ -1,13 +1,15 @@
-const { buildSchema } = require('graphql');
+// const { buildSchema } = require('graphql');
+
+const { buildSchema } = require("type-graphql")
 
 const UserProfile = buildSchema`
 type UserProfile {
-  account_type: String!
+  account_type: [String]
   id: Int!
   media_count: Int
   username: String
-}
-`;
+}`
+  ;
 
 const MediaData = buildSchema`
 type MediaData {
