@@ -11,7 +11,7 @@ type UserProfile {
 }`
   ;
 
-const typeDefs = `
+const MediaData = buildSchema`
 type MediaData {
   caption: String
   comments_count: Int
@@ -42,7 +42,6 @@ const Insights = buildSchema`
 
 
 module.exports = {
-  typeDefs,
   UserProfile,
   MediaData,
   Insights
