@@ -1,4 +1,4 @@
-const { UserInputError } = require("apollo-server-express");
+import { UserInputError } from "apollo-server-express"
 const { get } = require("axios").default;
 require("dotenv").config();
 
