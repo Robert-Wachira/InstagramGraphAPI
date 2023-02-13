@@ -18,7 +18,12 @@ app.use(
   graphqlHttp({
     schema: graphQlSchema,
     rootValue: graphQlResolvers,
-    graphiql: true
+    // graphiql: true
+    context: ({ req }) =>
+    {
+      const access_token = req.headers.ACCESS_TOKEN
+      return { access_token };
+    }
   })
 );
 
