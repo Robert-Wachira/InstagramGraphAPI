@@ -1,6 +1,6 @@
 // const { buildSchema } = require('graphql');
 
-import { buildSchema }  from 'type-graphql'
+const { buildSchema } = require('type-graphql')
 
 const UserProfile = buildSchema`
 type UserProfile {
