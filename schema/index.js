@@ -1,5 +1,3 @@
-// const { buildSchema } = require('graphql');
-
 const { buildSchema } = require('type-graphql')
 
 const UserProfile = buildSchema`
@@ -42,7 +40,7 @@ type Insights {
 const HashtaggedMedia = buildSchema`
 type HashtaggedMedia{
   caption: String
-  children: []
+  children: [String]
   comment_count: Int
   id: Int
   like_count: Int
