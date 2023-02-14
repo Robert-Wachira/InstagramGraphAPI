@@ -39,7 +39,7 @@ type Insights {
 `
 const HashtaggedMedia = buildSchema`
 type HashtaggedMedia{
-  caption: String
+  caption: String!
   children: [String]
   comment_count: Int
   id: Int
