@@ -33,16 +33,29 @@ type MediaData {
 `;
 
 const Insights = buildSchema`
-{
+type Insights {
   profile_views: Int
   period: Boolean
   impressions: String
 }
 `
+const HashtaggedMedia = buildSchema`
+type HashtaggedMedia{
+  caption: String
+  children: []
+  comment_count: Int
+  id: Int
+  like_count: Int
+  media_type: String
+  media_url: String
+  permalink: String
+  timestamp: Date
+}`
 
 
 module.exports = {
   UserProfile,
   MediaData,
-  Insights
+  Insights,
+  HashtaggedMedia
 }
