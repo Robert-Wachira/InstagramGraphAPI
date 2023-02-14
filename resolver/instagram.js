@@ -2,13 +2,10 @@ const { UserInputError } = require("apollo-server-express")
 const { get } = require("axios").default;
 require("dotenv").config();
 
-
-// getting user profile
 async function getUserProfile()
 {
     let response;
 
-    // send request to the API
     try
     {
         response = await get("https://graph.instagram.com/me", {
@@ -22,21 +19,16 @@ async function getUserProfile()
         });
     } catch (error)
     {
-        // Catch an error and return it.
         return new UserInputError(error);
     }
-
-    // If no error, return the response.
     response = response["data"];
     return response;
 }
 
-// getting media data
 async function getMediaData()
 {
     let response;
 
-    // Send request to the API
     try
     {
         response = await get("https://graph.instagram.com/me/media", {
@@ -51,21 +43,16 @@ async function getMediaData()
         });
     } catch (error)
     {
-        // Catch an error and return it.
         return new UserInputError(error);
     }
 
-    // If no error, return the response.
     response = response["data"];
     return response.data;
 }
 
-// getting Insights
 async function getInsights()
 {
     let response;
-
-    // send request to the API
     try
     {
         response = await get(`https://graph.instagram.com/${media_id}`, {
@@ -78,21 +65,43 @@ async function getInsights()
                 host: "graph.instagram.com",
             },
         });
-    } catch (error)
+    }
+    catch (error)
     {
-        // Catch an error, and return it
         return new UserInputError(error);
     }
 
-    // If no error, return the response
     response = response["data"];
     return response;
 }
 
-
+async function getHashtaggedMedia()
+{
+    let response;
+    try
+    {
+        response = await get(`https://graph.instagram.com/${media_id}`, {
+            params: {
+                fields:
+                    "profile_views, period, impressions",
+                access_token: process.env.ACCESS_TOKEN,
+            },
+            headers: {
+                host: "graph.instagram.com",
+            },
+        })
+    }
+    catch (error)
+    {
+        return new UserInputError(error);
+    }
+    response = response["data"];
+    return response;
+}
 
 module.exports = {
     getUserProfile,
     getMediaData,
-    getInsights
+    getInsights,
+    getHashtaggedMedia
 };

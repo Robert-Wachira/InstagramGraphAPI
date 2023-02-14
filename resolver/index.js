@@ -1,14 +1,16 @@
 const {
     getUserProfile,
     getMediaData,
-    getInsights
+    getInsights,
+    getHashtaggedMedia
 } = require("./instagram");
 
 const Query = {
     Query: {
         getUserProfile: () => getUserProfile(),
         getMediaData: () => getMediaData(),
-        getInsights: () => getInsights()
+        getInsights: () => getInsights(),
+        getHashtaggedMedia: () => getHashtaggedMedia()
     }
 }
 
