@@ -13,7 +13,7 @@ const MediaData = buildSchema`
 type MediaData {
   caption: String
   comments_count: Int
-  id: Int
+  id: Int!
   ig_id: Int
   is_comment_enabled: Boolean
   is_shared_to_feed: Boolean
