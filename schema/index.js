@@ -1,15 +1,16 @@
-const { buildSchema } = require('type-graphql')
+const { gql } = require('apollo-server-express')
 
-const UserProfile = buildSchema`
+const UserProfile = gql`
 type UserProfile {
   account_type: [String]
-  id: Int!
+  id: String!
   media_count: Int
   username: String
-}`
-  ;
+  name: String
+  last_name: String
+}`;
 
-const MediaData = buildSchema`
+const MediaData = gql`
 type MediaData {
   caption: String
   comments_count: Int
@@ -24,20 +25,19 @@ type MediaData {
   permalink: String
   shortcode: Float
   thumbnail_url: String
-  timestamp: Date
+  timestamp: Int
   username: String
   video_title: String
-}
-`;
+}`;
 
-const Insights = buildSchema`
+const Insights = gql`
 type Insights {
   profile_views: Int
   period: Boolean
   impressions: String
-}
-`
-const HashtaggedMedia = buildSchema`
+}`;
+
+const HashtaggedMedia = gql`
 type HashtaggedMedia{
   caption: String!
   children: [String]
@@ -47,13 +47,24 @@ type HashtaggedMedia{
   media_type: String
   media_url: String
   permalink: String
-  timestamp: Date
-}`
+  timestamp: Int
+}`;
+
+const Query = gql`
+  type Query{
+    getUserProfile: UserProfile
+    getMediaData: MediaData
+    getInsights: Insights
+    getHashtaggedMedia: HashtaggedMedia
+  }
+`;
 
 
-module.exports = {
+
+module.exports = [
+  Query,
   UserProfile,
   MediaData,
   Insights,
   HashtaggedMedia
-}
+];

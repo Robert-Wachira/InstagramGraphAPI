@@ -8,13 +8,13 @@ async function getUserProfile()
 
     try
     {
-        response = await get("https://graph.instagram.com/me", {
+        response = await get("https://graph.facebook.com/v16.0/me", {
             params: {
-                fields: "id,username,media_count,account_type",
-                access_token: process.env.ACCESS_TOKEN,
+                fields: "id,name,last_name",
+                access_token: "EAAOrLsMibvABAAWHeAzmXh5uzgEF11Ho1dNbqlEbtq8DnZCYMMEa6cpPSxqYG1yvdWdMc7NZA6loqRn49YA2MfNEfg5PCvQZCseqtxsXtaQZB0mbbHV7xDs25iA1IPTDJG3JBnkc1rYOgbVjktZARUrkgbtpQKjkZCR8SXYVCyR2KLfYLaFoRZATdzxIXSSbE3jYnAQoBVuiAZDZD",
             },
             headers: {
-                host: "graph.instagram.com",
+                host: "graph.facebook.com",
             },
         });
     } catch (error)
